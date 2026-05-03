@@ -6,17 +6,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.databinding.DataBindingUtil
+import com.mhdarslan.databindingexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val quoteTextView = findViewById<TextView>(R.id.quoteText)
-        val quoteAuthorView = findViewById<TextView>(R.id.quoteAuthor)
+        val quoteObject = Quote("Do, or do not. There is no try.", "Yoda")
+        binding.quote = quoteObject
 
-        quoteTextView.text = "Do, or do not. There is no try."
-        quoteAuthorView.text = "Yoda"
     }
 }
