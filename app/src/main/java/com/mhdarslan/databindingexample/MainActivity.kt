@@ -13,15 +13,17 @@ import com.mhdarslan.databindingexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        binding.mainViewModel = mainViewModel
-        binding.lifecycleOwner = this
+        val post = Post(
+            "Não somos uma banda de hair metal, diz baixista do Tesla",
+            "Brian Wheat destaca que a sonoridade do grupo se assemelha mais ao Black Crowes do que às bandas farofas.",
+            "https://whiplash.net/imagens_promo_22/tesla_divulgacao_tour_2024.jpg")
+
+        binding.post = post
     }
 }
